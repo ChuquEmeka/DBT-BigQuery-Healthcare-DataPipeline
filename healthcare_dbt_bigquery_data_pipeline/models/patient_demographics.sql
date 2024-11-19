@@ -1,12 +1,15 @@
 {{ config(
     materialized='incremental',
-    unique_key='patient_id',
-    incremental_strategy='insert_overwrite'
+    incremental_strategy='merge',
+    partition_by={
+        "field": "age_group",
+        "data_type": "string"
+    }
 ) }}
 
 WITH age_groups AS (
     SELECT
-        patient_id,
+        patient_id,  -- Include patient_id here
         CASE
             WHEN age < 18 THEN 'Child'
             WHEN age BETWEEN 18 AND 34 THEN 'Young Adult'
@@ -20,6 +23,7 @@ WITH age_groups AS (
 )
 
 SELECT
+    patient_id,  -- Include patient_id in the final SELECT if required
     age_group,
     gender,
     insurance_type,
@@ -27,6 +31,6 @@ SELECT
 FROM
     age_groups
 GROUP BY
-    age_group, gender, insurance_type
+    patient_id, age_group, gender, insurance_type  -- Include patient_id in GROUP BY
 ORDER BY
     age_group

@@ -1,7 +1,7 @@
 {{ config(
     materialized='incremental',
-    unique_key='patient_id',
-    incremental_strategy='insert_overwrite'
+    unique_key='patient_id'
+    
 ) }}
 
 SELECT

@@ -1,7 +1,11 @@
 {{ config(
     materialized='incremental',
     unique_key='claim_id',
-    incremental_strategy='insert_overwrite'
+    incremental_strategy='merge',
+    partition_by={
+        "field": "service_date",
+        "data_type": "date"
+    }
 ) }}
 
 WITH patient_info AS (
@@ -11,16 +15,9 @@ WITH patient_info AS (
         p.last_name,
         p.age,
         p.gender,
-        p.insurance_type,
-        e.visit_date,
-        e.diagnosis_code,
-        e.diagnosis_desc
+        p.insurance_type
     FROM
         {{ source('healthcare_data', 'patient_data_external') }} p
-    LEFT JOIN
-        {{ source('healthcare_data', 'ehr_data_external') }} e
-    ON
-        p.patient_id = e.patient_id
 ),
 
 claims_info AS (
@@ -28,12 +25,16 @@ claims_info AS (
         c.claim_id,
         c.patient_id,
         c.provider_id,
-        c.service_date,
-        c.diagnosis_code,
-        c.claim_amount,
-        c.status
+        MAX(c.service_date) AS service_date,  
+        MAX(c.diagnosis_code) AS diagnosis_code,  
+        SUM(c.claim_amount) AS total_claim_amount,  
+        MAX(c.status) AS status  
     FROM
         {{ source('healthcare_data', 'claims_data_external') }} c
+    WHERE
+        c.claim_id IS NOT NULL
+    GROUP BY
+        c.claim_id, c.patient_id, c.provider_id
 )
 
 SELECT
@@ -47,7 +48,7 @@ SELECT
     ci.provider_id,
     ci.service_date,
     ci.diagnosis_code,
-    ci.claim_amount,
+    ci.total_claim_amount AS claim_amount,
     ci.status
 FROM
     patient_info pi
