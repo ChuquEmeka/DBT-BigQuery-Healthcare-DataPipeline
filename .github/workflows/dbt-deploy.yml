@@ -1,4 +1,4 @@
-name: CI/CD for dbt Models with Debugging
+name: CI/CD for dbt Models
 
 on:
   pull_request:
@@ -47,20 +47,20 @@ jobs:
     # Step 6: Create gcp-key.json and profiles.yml
     - name: Create GCP Key and profiles.yml
       run: |
-        mkdir -p ~/.dbt
+        mkdir -p /home/runner/.dbt
 
         # Write the Google credentials JSON file
-        printf "%s" "${{ secrets.GOOGLE_CREDENTIALS }}" > ~/.dbt/gcp-key.json
+        printf "%s" "${{ secrets.GOOGLE_CREDENTIALS }}" > /home/runner/.dbt/gcp-key.json
 
         # Dynamically generate profiles.yml
-        cat <<EOF > ~/.dbt/profiles.yml
+        cat <<EOF > /home/runner/.dbt/profiles.yml
         healthcare_dbt_bigquery_data_pipeline:
           outputs:
             dev:
               dataset: dev_healthcare_data
               job_execution_timeout_seconds: 300
               job_retries: 1
-              keyfile: ~/.dbt/gcp-key.json
+              keyfile: /home/runner/.dbt/gcp-key.json
               location: europe-west3
               method: service-account
               priority: interactive
@@ -72,7 +72,7 @@ jobs:
               dataset: prod_healthcare_data
               job_execution_timeout_seconds: 300
               job_retries: 1
-              keyfile: ~/.dbt/gcp-key.json
+              keyfile: /home/runner/.dbt/gcp-key.json
               location: europe-west3
               method: service-account
               priority: interactive
@@ -85,19 +85,19 @@ jobs:
 
         # Debugging: Verify the files were created successfully
         echo "Contents of gcp-key.json:"
-        cat ~/.dbt/gcp-key.json | head -n 10  # Print first 10 lines for debugging
+        cat /home/runner/.dbt/gcp-key.json | head -n 10
         echo "Contents of profiles.yml:"
-        cat ~/.dbt/profiles.yml
+        cat /home/runner/.dbt/profiles.yml
 
     # Step 7: Run dbt Tests
     - name: Run dbt Tests
       run: |
         source dbt_bigquery_venv/bin/activate
-        dbt test --profiles-dir ~/.dbt --target dev
+        dbt test --profiles-dir /home/runner/.dbt --target dev
 
     # Step 8: Deploy to Production
     - name: Deploy to Production
       if: github.event.pull_request.merged == true
       run: |
         source dbt_bigquery_venv/bin/activate
-        dbt run --profiles-dir ~/.dbt --target prod
+        dbt run --profiles-dir /home/runner/.dbt --target prod
