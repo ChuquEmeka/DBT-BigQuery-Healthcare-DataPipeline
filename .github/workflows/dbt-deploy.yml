@@ -1,0 +1,51 @@
+name: CI/CD for dbt Models with dbt_bigquery_venv
+
+on:
+  pull_request:
+    branches:
+      - master
+
+jobs:
+  test-and-deploy:
+    name: Test and Deploy to Production
+    runs-on: ubuntu-latest
+
+    steps:
+    # Step 1: Checkout the repository
+    - name: Checkout Code
+      uses: actions/checkout@v3
+
+    # Step 2: Set up Python environment
+    - name: Set up Python
+      uses: actions/setup-python@v4
+      with:
+        python-version: '3.9'
+
+    # Step 3: Set up virtual environment
+    - name: Set up Virtual Environment
+      run: |
+        python -m venv dbt_bigquery_venv
+        source dbt_bigquery_venv/bin/activate
+        pip install --upgrade pip
+        pip install dbt-bigquery==1.8.3
+        pip install -r requirements.txt
+
+    # Step 4: Set up GCP credentials
+    - name: Authenticate with Google Cloud
+      env:
+        GOOGLE_APPLICATION_CREDENTIALS: ${{ secrets.GOOGLE_CREDENTIALS }}
+      run: |
+        echo "${{ secrets.GOOGLE_CREDENTIALS }}" > gcp-key.json
+
+    # Step 5: Run dbt tests
+    - name: Run dbt Tests
+      run: |
+        source dbt_bigquery_venv/bin/activate
+        dbt test --profiles-dir . --target dev
+
+    # Step 6: Deploy to Production
+    - name: Deploy to Production
+      if: github.event.pull_request.merged == true
+      run: |
+        source dbt_bigquery_venv/bin/activate
+        dbt run --profiles-dir . --target prod
