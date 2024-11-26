@@ -2,7 +2,7 @@
 
 Explore the full **YouTube Playlist** documenting the development of this end-to-end data pipeline project. The series covers:
 
-- Setting up **Google Cloud Service Accounts** and **BigQuery**.
+- Setting up **Google Cloud Service Accounts** and **BigQuery**..
 - Creating external tables in **BigQuery** to connect raw data from Google Cloud Storage.
 - Building and deploying **dbt models** using both **dbt Cloud** and **dbt Core (CLI)**.
 - Automating testing and production deployments with **GitHub Actions**.
