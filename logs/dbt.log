@@ -8583,3 +8583,59 @@ where patient_count is null
 [0m17:40:54.902540 [debug] [MainThread]: Command `dbt build` succeeded at 17:40:54.901536 after 20.05 seconds
 [0m17:40:54.903542 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'invocation', 'label': 'end', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x0000022A49F82F50>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x0000022A5E7956C0>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x0000022A4C53DB10>]}
 [0m17:40:54.905538 [debug] [MainThread]: Flushing usage events
+[0m09:48:50.737319 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'invocation', 'label': 'start', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x000001BA49F12F80>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x000001BA4C90C7C0>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x000001BA4C8BEF80>]}
+
+
+============================== 09:48:50.745626 | 541dcf21-b959-4e28-8c2b-d7d516ad53ee ==============================
+[0m09:48:50.745626 [info ] [MainThread]: Running with dbt=1.8.7
+[0m09:48:50.747173 [debug] [MainThread]: running dbt with arguments {'printer_width': '80', 'indirect_selection': 'eager', 'log_cache_events': 'False', 'write_json': 'True', 'partial_parse': 'True', 'cache_selected_only': 'False', 'warn_error': 'None', 'version_check': 'True', 'fail_fast': 'False', 'log_path': 'C:\\Users\\User\\Desktop\\Projects\\DBT-BigQuery-Healthcare-DataPipeline\\logs', 'debug': 'False', 'profiles_dir': 'C:\\Users\\User\\.dbt', 'use_colors': 'True', 'use_experimental_parser': 'False', 'no_print': 'None', 'quiet': 'False', 'empty': 'None', 'log_format': 'default', 'static_parser': 'True', 'introspect': 'True', 'warn_error_options': 'WarnErrorOptions(include=[], exclude=[])', 'target_path': 'None', 'invocation_command': 'dbt debug', 'send_anonymous_usage_stats': 'True'}
+[0m09:48:50.807199 [info ] [MainThread]: dbt version: 1.8.7
+[0m09:48:50.808583 [info ] [MainThread]: python version: 3.10.7
+[0m09:48:50.810602 [info ] [MainThread]: python path: C:\Users\User\Desktop\Projects\DBT-BigQuery-Healthcare-DataPipeline\dbt_bigquery_venv\Scripts\python.exe
+[0m09:48:50.811597 [info ] [MainThread]: os info: Windows-10-10.0.22631-SP0
+[0m09:48:59.246775 [info ] [MainThread]: Using profiles dir at C:\Users\User\.dbt
+[0m09:48:59.247444 [info ] [MainThread]: Using profiles.yml file at C:\Users\User\.dbt\profiles.yml
+[0m09:48:59.249904 [info ] [MainThread]: Using dbt_project.yml file at C:\Users\User\Desktop\Projects\DBT-BigQuery-Healthcare-DataPipeline\dbt_project.yml
+[0m09:48:59.250912 [info ] [MainThread]: adapter type: bigquery
+[0m09:48:59.251913 [info ] [MainThread]: adapter version: 1.8.3
+[0m09:48:59.390186 [info ] [MainThread]: Configuration:
+[0m09:48:59.391184 [info ] [MainThread]:   profiles.yml file [[32mOK found and valid[0m]
+[0m09:48:59.392187 [info ] [MainThread]:   dbt_project.yml file [[32mOK found and valid[0m]
+[0m09:48:59.393186 [info ] [MainThread]: Required dependencies:
+[0m09:48:59.395251 [debug] [MainThread]: Executing "git --help"
+[0m09:48:59.425368 [debug] [MainThread]: STDOUT: "b"usage: git [-v | --version] [-h | --help] [-C <path>] [-c <name>=<value>]\n           [--exec-path[=<path>]] [--html-path] [--man-path] [--info-path]\n           [-p | --paginate | -P | --no-pager] [--no-replace-objects] [--bare]\n           [--git-dir=<path>] [--work-tree=<path>] [--namespace=<name>]\n           [--super-prefix=<path>] [--config-env=<name>=<envvar>]\n           <command> [<args>]\n\nThese are common Git commands used in various situations:\n\nstart a working area (see also: git help tutorial)\n   clone     Clone a repository into a new directory\n   init      Create an empty Git repository or reinitialize an existing one\n\nwork on the current change (see also: git help everyday)\n   add       Add file contents to the index\n   mv        Move or rename a file, a directory, or a symlink\n   restore   Restore working tree files\n   rm        Remove files from the working tree and from the index\n\nexamine the history and state (see also: git help revisions)\n   bisect    Use binary search to find the commit that introduced a bug\n   diff      Show changes between commits, commit and working tree, etc\n   grep      Print lines matching a pattern\n   log       Show commit logs\n   show      Show various types of objects\n   status    Show the working tree status\n\ngrow, mark and tweak your common history\n   branch    List, create, or delete branches\n   commit    Record changes to the repository\n   merge     Join two or more development histories together\n   rebase    Reapply commits on top of another base tip\n   reset     Reset current HEAD to the specified state\n   switch    Switch branches\n   tag       Create, list, delete or verify a tag object signed with GPG\n\ncollaborate (see also: git help workflows)\n   fetch     Download objects and refs from another repository\n   pull      Fetch from and integrate with another repository or a local branch\n   push      Update remote refs along with associated objects\n\n'git help -a' and 'git help -g' list available subcommands and some\nconcept guides. See 'git help <command>' or 'git help <concept>'\nto read about a specific subcommand or concept.\nSee 'git help git' for an overview of the system.\n""
+[0m09:48:59.425368 [debug] [MainThread]: STDERR: "b''"
+[0m09:48:59.426380 [info ] [MainThread]:  - git [[32mOK found[0m]
+
+[0m09:48:59.427601 [info ] [MainThread]: Connection:
+[0m09:48:59.428600 [info ] [MainThread]:   method: service-account
+[0m09:48:59.430601 [info ] [MainThread]:   database: healthcare-data-project-442109
+[0m09:48:59.431601 [info ] [MainThread]:   execution_project: healthcare-data-project-442109
+[0m09:48:59.432608 [info ] [MainThread]:   schema: dev_healthcare_data
+[0m09:48:59.433850 [info ] [MainThread]:   location: europe-west3
+[0m09:48:59.436385 [info ] [MainThread]:   priority: interactive
+[0m09:48:59.437914 [info ] [MainThread]:   maximum_bytes_billed: None
+[0m09:48:59.438913 [info ] [MainThread]:   impersonate_service_account: None
+[0m09:48:59.439916 [info ] [MainThread]:   job_retry_deadline_seconds: None
+[0m09:48:59.440912 [info ] [MainThread]:   job_retries: 1
+[0m09:48:59.440912 [info ] [MainThread]:   job_creation_timeout_seconds: None
+[0m09:48:59.441935 [info ] [MainThread]:   job_execution_timeout_seconds: 300
+[0m09:48:59.442919 [info ] [MainThread]:   timeout_seconds: 300
+[0m09:48:59.443910 [info ] [MainThread]:   client_id: None
+[0m09:48:59.447978 [info ] [MainThread]:   token_uri: None
+[0m09:48:59.450520 [info ] [MainThread]:   dataproc_region: None
+[0m09:48:59.453035 [info ] [MainThread]:   dataproc_cluster_name: None
+[0m09:48:59.457098 [info ] [MainThread]:   gcs_bucket: None
+[0m09:48:59.458107 [info ] [MainThread]:   dataproc_batch: None
+[0m09:48:59.459109 [info ] [MainThread]: Registered adapter: bigquery=1.8.3
+[0m09:49:00.180338 [debug] [MainThread]: Acquiring new bigquery connection 'debug'
+[0m09:49:00.181339 [debug] [MainThread]: Opening a new connection, currently in state init
+[0m09:49:00.202107 [debug] [MainThread]: On debug: select 1 as id
+[0m09:49:01.216989 [debug] [MainThread]: BigQuery adapter: https://console.cloud.google.com/bigquery?project=healthcare-data-project-442109&j=bq:europe-west3:ff4d9829-36c5-436b-a764-84a80105e65c&page=queryresults
+[0m09:49:01.605296 [info ] [MainThread]:   Connection test: [[32mOK connection ok[0m]
+
+[0m09:49:01.607374 [info ] [MainThread]: [32mAll checks passed![0m
+[0m09:49:01.608560 [debug] [MainThread]: Command `dbt debug` succeeded at 09:49:01.608560 after 11.01 seconds
+[0m09:49:01.609555 [debug] [MainThread]: Connection 'debug' was properly closed.
+[0m09:49:01.610560 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'invocation', 'label': 'end', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x000001BA49F12F80>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x000001BA5E0BBA30>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x000001BA5E068880>]}
+[0m09:49:01.610560 [debug] [MainThread]: Flushing usage events
