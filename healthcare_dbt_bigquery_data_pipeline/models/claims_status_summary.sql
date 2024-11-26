@@ -1,7 +1,7 @@
 {{ config(
     materialized='incremental',
-    unique_key='claim_id',
-    incremental_strategy='merge'
+    unique_key='claim_id'
+    
 ) }}
 
 SELECT

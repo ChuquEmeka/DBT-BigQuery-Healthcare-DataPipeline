@@ -1,16 +1,4 @@
-# version: 2
 
-# sources:
-#   - name: healthcare_data
-#     database: healthcare-data-project-442109
-#     schema: "{{ var('schema_name', 'dev_healthcare_data') }}"
-#     tables:
-#       - name: patient_data_external
-#         description: "External table for patient demographic data in GCS."
-#       - name: ehr_data_external
-#         description: "External table for electronic health records in GCS."
-#       - name: claims_data_external
-#         description: "External table for healthcare claims data in GCS."
 
 
 version: 2

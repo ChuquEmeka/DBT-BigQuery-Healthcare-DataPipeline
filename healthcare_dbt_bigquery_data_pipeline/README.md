@@ -1,15 +1,11 @@
-Welcome to your new dbt project!
+## 📺 YouTube Playlist: End-to-End Data Pipelines with dbt Cloud, dbt Core, BigQuery, Google Cloud, and GitHub Actions
 
-### Using the starter project
+Explore the full **YouTube Playlist** documenting the development of this end-to-end data pipeline project. The series covers:
 
-Try running the following commands:
-- dbt run
-- dbt test
+- Setting up **Google Cloud Service Accounts** and **BigQuery**.
+- Creating external tables in **BigQuery** to connect raw data from Google Cloud Storage.
+- Building and deploying **dbt models** using both **dbt Cloud** and **dbt Core (CLI)**.
+- Automating testing and production deployments with **GitHub Actions**.
 
-
-### Resources:
-- Learn more about dbt [in the docs](https://docs.getdbt.com/docs/introduction)
-- Check out [Discourse](https://discourse.getdbt.com/) for commonly asked questions and answers
-- Join the [chat](https://community.getdbt.com/) on Slack for live discussions and support
-- Find [dbt events](https://events.getdbt.com) near you
-- Check out [the blog](https://blog.getdbt.com/) for the latest news on dbt's development and best practices
+🎥 **Watch the full series here:**  
+[End-to-End Data Pipelines with dbt Cloud, dbt Core, BigQuery, Google Cloud, and GitHub Actions](https://www.youtube.com/playlist?list=PLs9W2D7jqlTXbHWkpNUzIC_G8KpLMH6yZ)

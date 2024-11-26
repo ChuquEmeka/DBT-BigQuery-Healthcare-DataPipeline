@@ -1,7 +1,7 @@
 {{ config(
     materialized='incremental',
-    unique_key='diagnosis_code',
-    incremental_strategy='merge'
+    unique_key='diagnosis_code'
+    
 ) }}
 
 SELECT

@@ -13,33 +13,29 @@ from google.cloud import storage
 
 from google.cloud import storage
 
-# Specify the full path to the JSON key file
+# Specifying the full path to the JSON key file
 keyfile_path = "C:/Users/User/Desktop/Projects/healthcare-data-project-442109-f33db94a36a9.json"
 storage_client = storage.Client.from_service_account_json(keyfile_path)
 
-# Test connection
+
 buckets = list(storage_client.list_buckets())
 print("Successfully connected to GCS. Available buckets:")
 for bucket in buckets:
     print(f" - {bucket.name}")
-# Initialize Faker and GCS client
 fake = Faker()
-# storage_client = storage.Client()
 
-# Define GCS bucket and paths
 BUCKET_NAME = 'healthcare-data-bucket-emeka'
 DEV_PATH = 'dev/'
 PROD_PATH = 'prod/'
 
-# Define the number of records
+
 DEV_RECORDS = 5000
 PROD_RECORDS = 20000
 
-# Define date range
+
 start_date = datetime(2020, 1, 1)
 end_date = datetime.today()
 
-# Create the GCS bucket if it doesn't exist
 def create_bucket():
     try:
         bucket = storage_client.bucket(BUCKET_NAME)
@@ -51,7 +47,7 @@ def create_bucket():
     except Exception as e:
         print(f"Error creating bucket: {e}")
 
-# Helper function to empty a folder in the GCS bucket
+
 def empty_gcs_folder(path):
     print(f"Emptying folder '{path}' in GCS bucket '{BUCKET_NAME}'...")
     bucket = storage_client.bucket(BUCKET_NAME)
@@ -61,7 +57,7 @@ def empty_gcs_folder(path):
         print(f"Deleted '{blob.name}'")
     print(f"Completed emptying folder '{path}'.")
 
-# Helper function for uploading data to GCS
+
 def upload_to_gcs(data, path, filename, file_format):
     print(f"Uploading {filename} in {file_format} format to GCS...")
     bucket = storage_client.bucket(BUCKET_NAME)
@@ -80,7 +76,7 @@ def upload_to_gcs(data, path, filename, file_format):
         blob.upload_from_file(buffer, content_type='application/octet-stream')
     print(f"Uploaded {filename} to {path}")
 
-# Helper function for generating patient demographic data in CSV format
+
 def generate_patients(num_records):
     print("Generating patient demographic data in CSV format...")
     patients = []
@@ -106,7 +102,7 @@ def generate_patients(num_records):
         })
     return pd.DataFrame(patients)
 
-# Helper function for generating EHR data in newline-delimited JSON format
+
 def generate_ehr(num_records, patient_ids):
     print("Generating electronic health records data in newline-delimited JSON format...")
     ehr_records = []
